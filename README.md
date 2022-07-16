@@ -4,7 +4,7 @@
 
 ## :book: Installation
 ```
-wget https://raw.githubusercontent.com/Thanatad/ssh-panel-php/Panelweb.sh; chmod +x Panelweb.sh; ./Panelweb.sh
+wget https://raw.githubusercontent.com/Thanatad/ssh-panel-php/main/Panelweb.sh; chmod +x Panelweb.sh; ./Panelweb.sh
 ```
 After you just need to run the next line to use it again: ipw
 

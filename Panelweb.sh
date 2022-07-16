@@ -31,7 +31,7 @@ IP=$(cat /etc/IP)
 x="ok"
 menu() {
     panel() {
-        wget https://raw.githubusercontent.com/Thanatad/ssh-panel-php/panel/install >/dev/null 2>&1
+        wget https://raw.githubusercontent.com/Thanatad/ssh-panel-php/main/panel/install >/dev/null 2>&1
         chmod +x install
         ./install
     }
@@ -47,7 +47,7 @@ menu() {
         rm -rf $HOME/Painel.sh*
         rm -rf $HOME/Panel.sql*
         rm -rf $HOME/Panelweb.sh* >/dev/null 2>&1
-        wget https://raw.githubusercontent.com/Thanatad/ssh-panel-php/Panelweb.sh >/dev/null 2>&1
+        wget https://raw.githubusercontent.com/Thanatad/ssh-panel-php/main/Panelweb.sh >/dev/null 2>&1
         echo ""
         echo -e "\033[1;33m CLEAN FOLDER SUCCESSFULLY -\033[1;32m OK !\033[1;37m"
         sleep 4s
@@ -84,7 +84,7 @@ menu() {
         fun_att() {
             service ssh restart >/dev/null 2>&1
             rm -rf $HOME/Panelweb.sh* >/dev/null 2>&1
-            wget https://raw.githubusercontent.com/Thanatad/ssh-panel-php/Panelweb.sh >/dev/null 2>&1
+            wget https://raw.githubusercontent.com/Thanatad/ssh-panel-php/main/Panelweb.sh >/dev/null 2>&1
         }
         fun_bar 'fun_att'
         echo ""
