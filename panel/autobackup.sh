@@ -1,6 +1,6 @@
 #!/bin/bash
 clear
 DirBackup="banco19157"
-rm /var/www/html/admin/pages/apis/$DirBackup/panel.sql > /dev/null 2>&1
+rm /var/www/html/admin/pages/apis/$DirBackup/Panel.sql > /dev/null 2>&1
 senha=$(cat /var/www/html/pages/system/pass.php |cut -d"'" -f2)
-mysqldump -u root -p$senha panel > /var/www/html/admin/pages/apis/$DirBackup/panel.sql
+mysqldump -u root -p$senha panel > /var/www/html/admin/pages/apis/$DirBackup/Panel.sql
