@@ -75,35 +75,6 @@ fun_mcrypt () {
 fun_bar 'fun_mcrypt'
 echo ""
 #
-
-echo -e "           \033[1;33m● \033[1;32mINSTALLING MySQL \033[1;33m●\033[0m"
-mariadbver='10.0'
-echo "mariadb-server-$mariadbver mysql-server/root_password password $senha" | debconf-set-selections
-echo "mariadb-server-$mariadbver mysql-server/root_password_again password $senha" | debconf-set-selections
-echo "mariadb-client-$mariadbver mysql-server/root_password password $senha" | debconf-set-selections
-echo "mariadb-client-$mariadbver mysql-server/root_password_again password $senha" | debconf-set-selections
-fun_sql () {
-    apt-get install mariadb-server mariadb-client -y > /dev/null 2>&1
-	}
-	(echo $senha; echo n; echo y; echo y; echo y; echo y)|mysql_secure_installation > /dev/null 2>&1
-fun_bar 'fun_sql'
-echo ""
-#
-echo -e "           \033[1;33m● \033[1;32mINSTALLING PHPMYADMIN \033[1;33m●\033[0m"
-echo "phpmyadmin phpmyadmin/dbconfig-install boolean true" | debconf-set-selections
-echo "phpmyadmin phpmyadmin/app-password-confirm password $senha" | debconf-set-selections
-echo "phpmyadmin phpmyadmin/mysql/admin-pass password $senha" | debconf-set-selections
-echo "phpmyadmin phpmyadmin/mysql/app-pass password $senha" | debconf-set-selections
-echo "phpmyadmin phpmyadmin/reconfigure-webserver multiselect apache2" | debconf-set-selections
-fun_phpmya () {
-apt-get install phpmyadmin -y > /dev/null 2>&1
-}
-fun_bar 'fun_phpmya'
-php5enmod mcrypt > /dev/null 2>&1
-service apache2 restart > /dev/null 2>&1
-ln -s /usr/share/phpmyadmin /var/www/html/phpmyadmin
-echo ""
-#
 echo -e "           \033[1;33m● \033[1;32mINSTALLING THE LIBSSH2 \033[1;33m●\033[0m"
 fun_libsh2 () {
 apt-get install libssh2-1-dev libssh2-php -y > /dev/null 2>&1
@@ -159,18 +130,6 @@ sed -i "s;1010;$senha;g" /var/www/html/pages/system/pass.php > /dev/null 2>&1
 fi
 sleep 1
 cd
-wget https://raw.githubusercontent.com/Thanatad/ssh-panel-php/main/panel/Panel.sql > /dev/null 2>&1
-sleep 1
-if [[ -e "$HOME/Panel.sql" ]]; then
-    mysql -h localhost -u root -p$senha --default_character_set utf8 sshplus < Panel.sql
-    rm /root/Panel.sql
-else
-    clear
-    echo -e "\033[1;31m ERROR IMPORTING DATABASE\033[0m"
-    sleep 2
-    rm /root/install > /dev/null 2>&1
-    exit
-fi
 service apache2 restart
 clear
 echo '* * * * * root /usr/bin/php /var/www/html/pages/system/cron.php' >> /etc/crontab
