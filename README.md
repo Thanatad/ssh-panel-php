@@ -23,12 +23,3 @@ After you just need to run the next line to use it again: ipw
 2. @backup-new - Contributor
 3. @Adeilsonfi - Contributor
 4. illuminati Dev Team - Contributor 
-
-#MYSQL
-$ sudo mysql -u root
-CREATE USER 'admin'@'localhost' IDENTIFIED BY 'adminspassword';
-GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost';
-FLUSH PRIVILEGES;
-exit
-$sudo service mysql restart
-$sudo service apache2 restart
