@@ -149,7 +149,6 @@ chmod 777 /var/www/html/admin/pages/download
 chmod 777 /var/www/html/admin/pages/faturas/comprovantes
 service apache2 restart
 sleep 1
-service apache2 restart
 clear
 echo ""
 #
